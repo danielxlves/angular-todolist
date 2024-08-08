@@ -1,0 +1,51 @@
+<div class="container">
+  
+    <div class="add-form">
+      <h2>Adicionar Nova Tarefa</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-control">
+          <label for="tarefa">Tarefa</label>
+          <input type="text" id="tarefa" [(ngModel)]="newTask.tarefa" name="tarefa" required />
+        </div>
+  
+        <div class="form-control">
+          <label for="categoria">Categoria</label>
+          <input type="text" id="categoria" [(ngModel)]="newTask.categoria" name="categoria" required />
+        </div>
+  
+        <div class="form-control">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" [(ngModel)]="newTask.descricao" name="descricao" required />
+        </div>
+  
+        <div class="form-control">
+          <label for="dataVencimento">Data de Vencimento</label>
+          <input type="date" id="dataVencimento" [(ngModel)]="newTask.dataVencimento" name="dataVencimento" required />
+        </div>
+  
+        <div class="form-control">
+          <label for="prioridade">Prioridade</label>
+          <input type="text" id="prioridade" [(ngModel)]="newTask.prioridade" name="prioridade" required />
+        </div>
+  
+        <div class="form-control-check">
+          <label for="concluido">Concluído</label>
+          <input type="checkbox" id="concluido" [(ngModel)]="newTask.concluido" name="concluido" />
+        </div>
+  
+        <button type="submit" class="btn btn-block">Adicionar Tarefa</button>
+      </form>
+    </div>
+  
+    <ul>
+      <li *ngFor="let task of tasks">
+        <strong>{{ task.tarefa }}</strong> ({{ task.categoria }})<br>
+        Descrição: {{ task.descricao }}<br>
+        Data de Vencimento: {{ task.dataVencimento }}<br>
+        Prioridade: {{ task.prioridade }}<br>
+        Status: {{ task.concluido ? 'Concluído' : 'Pendente' }}
+        <button (click)="onDelete(task.id)" class="btn btn-danger">Excluir</button>
+      </li>
+    </ul>
+  </div>
+  
